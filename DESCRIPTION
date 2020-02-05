@@ -1,0 +1,10 @@
+Package: climatedata
+Type: Package
+Title: Compendium of climate data from various sources
+Version: 1.1.0
+Author:  person("Ben", "Harden", email = "bharden@sea.edu", role = c("aut", "cre"))
+Maintainer: Ben Harden <bharden@sea.edu>
+Description: Climate data collected in raw format and processed into readily usable csv files for use as educational tool
+License: Free
+Encoding: UTF-8
+LazyData: true
