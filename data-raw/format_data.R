@@ -34,7 +34,7 @@ co2 <- rename(co2, ml = co2.x,bh = co2.y)
 co2 <- gather(co2,key = "station", value = co2, ml, bh)
 
 #Initial plot:
-g <- ggplot(co2, aes(time,co2,color = station)) +
+ggplot(co2, aes(time,co2,color = station)) +
   geom_line() +
   geom_smooth() +
   ylim(300,420) +
@@ -216,6 +216,7 @@ df <- read_tsv(file.path(read_dir,"HOT_surface_CO2.txt"), trim_ws = TRUE, skip =
 # Wrangle
 df[df<0] <- NA
 df <- mutate(df,dttm= lubridate::dmy(date))
+df <- select(df, dttm, DIC, TA, pHcalc_insitu, pCO2calc_insitu)
 
 # and plot
 ggplot(df, aes(dttm, pHcalc_insitu)) +
@@ -314,9 +315,9 @@ write_csv(df_all,file.path(write_dir,"gmsl.csv"))
 filename <- file.path(read_dir,"T-dC-w0-100m.dat")
 df <- read_delim(filename,delim = " ",trim_ws = TRUE)
 
-df <- transmute(df, time = YEAR, temp_anom = WO)
+df <- rename(df, time = YEAR)
 
-ggplot(df, aes(time, temp_anom)) +
+ggplot(df, aes(time, WO)) +
   geom_line()
 
 write_csv(df_all,file.path(write_dir,"ocean_temp.csv"))
