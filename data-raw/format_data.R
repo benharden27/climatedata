@@ -320,4 +320,4 @@ df <- rename(df, time = YEAR)
 ggplot(df, aes(time, WO)) +
   geom_line()
 
-write_csv(df_all,file.path(write_dir,"ocean_temp.csv"))
+write_csv(df,file.path(write_dir,"ocean_temp.csv"))
